@@ -1,4 +1,4 @@
----?image=assets/image/Nehalem_Die_Shot_2.jpg
+---
 
 ## Intel CPU's, Virtualization and You!
 
@@ -135,7 +135,13 @@ Note:
 
 ```
 cat /proc/cmdline
-BOOT_IMAGE=/vmlinuz-4.15.15-200.fc26.x86_64 root=/dev/mapper/basevg-root ro rd.driver.pre=vfio-pci pci-stub.ids=10de:1bb1,10de:10f0,6549:2200 nouveau.modeset=0 rd.blacklist=nouveau modprobe.blacklist=nouveau iommu=pt intel_iommu=on rd.lvm.lv=basevg/root
+BOOT_IMAGE=/vmlinuz-4.15.15-200.fc26.x86_64         \
+    root=/dev/mapper/basevg-root ro                 \
+    rd.lvm.lv=basevg/root nouveau.modeset=0         \
+    rd.blacklist=nouveau modprobe.blacklist=nouveau \
+    rd.driver.pre=vfio-pci                          \
+    pci-stub.ids=10de:1bb1,10de:10f0,6549:2200      \
+    intel_iommu=on iommu=pt 
 ```
 
 Note:
@@ -158,7 +164,7 @@ Note:
 
 ---
 
-## Stubbing out 
+## PCI Device and Vendor ID's
 
 ```
 lspci -vnn
@@ -182,11 +188,98 @@ lspci -vnn
         Kernel driver in use: vfio-pci
         Kernel modules: nouveau
 ```
+
 ---
 
+## The PCI Stub driver (pre 4.1)
+
+#### The kernel command line is where you attach devices to the pci-stub driver
+
 ```
-options vfio_iommu_type1 allow_unsafe_interrupts=1
+pci-stub.ids=10de:1bb1,10de:10f0,6549:2200   
 ```
+
+---
+
+## VFIO (Virtual Function I/O)
+
+```
+cat /etc/modprobe.d/vfio.conf
+options vfio-pci ids=10de:1bb1,10de:10f0,6549:2200 
+```
+
+---
+
+## CPU Pinning
+
+```
+virsh edit [vmname]
+<vcpu placement='static'>4</vcpu>
+<cputune>
+    <vcpupin vcpu='0' cpuset='2'/>
+    <vcpupin vcpu='1' cpuset='6'/>
+    <vcpupin vcpu='2' cpuset='3'/>
+    <vcpupin vcpu='3' cpuset='7'/>
+</cputune>
+...
+<cpu mode='custom' match='exact'>
+    ...
+    <topology sockets='1' cores='2' threads='2'/>
+    ...
+</cpu>
+
+Note:
+
+- Assuming Hyperthreading
+- Assuming you want your guest to see the CPU like it actually is.
+
+```
+
+---
+
+## Memory
+
+
+---?image=assets/image/uma.jpg
+## UMA
+
+
+---
+
+## NUMA
+
+---
+
+## Huge Pages
+
+- Transparent Huge Pages
+- Static Huge Pages
+
+---
+
+## Static Huge Pages
+
+```
+virsh edit [vmname]
+<memoryBacking>
+    <hugepages/>
+</memoryBacking>
+```
+
+##### Kernel Command Line Arguments
+
+```
+default_hugepagesz=1G hugepagesz=1G hugepages=256 transparent_hugepage=never
+```
+
+---
+
+## Passing through a video card
+
+- 3D applications
+- CUDA Applications
+- Machine Learning
+- Video Games
 
 ---
 
@@ -198,20 +291,36 @@ blacklist nouveau
 options nouveau modeset=0
 ```
 
-@note[ nouveau is the open source NVIDIA driver, it is great if you are a purist, but not good if you want to play games, mine bitcoin or get work done. ]
+Note:
+
+- nouveau is the open source NVIDIA driver, it is great if you are a purist
 
 ---
-## Extra Reading
 
-- https://en.wikipedia.org/wiki/Protection_ring
-- https://www.intel.com/content/www/us/en/virtualization/virtualization-technology/intel-virtualization-technology.html?iid=tech_vt+tech
-- https://software.intel.com/en-us/articles/best-practices-for-paravirtualization-enhancements-from-intel-virtualization-technology-ept-and-vt-d
-- https://01.org/blogs/2014/intel%C2%AE-graphics-virtualization-update
-- https://software.intel.com/en-us/articles/intel-virtualization-technology-for-directed-io-vt-d-enhancing-intel-platforms-for-efficient-virtualization-of-io-devices
-- https://software.intel.com/en-us/articles/single-root-inputoutput-virtualization-sr-iov-with-linux-containers
-- https://software.intel.com/en-us/articles/network-recipes-for-an-evolving-data-center
-- https://en.wikipedia.org/wiki/Page_table
-- https://en.wikipedia.org/wiki/Virtual_memory
+## Open Virtual Machine Firmware (OVMF)
+
+- You might be tempted to try and get this to work with SeaBIOS
+- Don't
+- Just use OVMF
+
+---
+
+## NVIDIA Drivers under Windows
+
+```
+virsh edit [vmname]
+<features>
+    <hyperv>
+        ...
+        <vendor_id state='on' value='whatever'/>
+        ...
+    </hyperv>
+    <kvm>
+        <hidden state='on'/>
+    </kvm>
+</features>
+---
+
 
 
 ---

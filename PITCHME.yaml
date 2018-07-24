@@ -1,5 +1,6 @@
 # Look-and-Feel
-theme : beige
+background : assets/image/bg.png
+theme : white
 highlight : github
 
 # Behavior

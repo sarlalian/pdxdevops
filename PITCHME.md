@@ -1,4 +1,4 @@
----
+---?image=assets/image/Nehalem_Die_Shot_2.jpg
 
 ## Intel CPU's, Virtualization and You!
 
@@ -13,7 +13,7 @@ wfife@laika.com
 
 CP-40 was a revolutionary research operating system that supported virtual machines, virtual memory and more.  Both CP-40 and 
 
----?image=assets/image/bg.png
+---
 @transition[none]
 
 The early days of Virtualization on hardware that is affordable by mere mortals.

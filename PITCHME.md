@@ -246,10 +246,17 @@ Note:
 
 ![uma](assets/image/uma.jpg)
 
+---
+
+## UMA (Uniform Memory Access)
+
+![uma](assets/images/uma_layout.jpg)
 
 ---
 
-## NUMA
+## NUMA (Non-Uniform Memory Access)
+
+![numa](assets/images/numa.png)
 
 ---
 

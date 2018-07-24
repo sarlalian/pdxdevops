@@ -307,11 +307,15 @@ Note:
 
 ---
 
+@transition[slide]
+
 ## Open Virtual Machine Firmware (OVMF)
 
+@ul[circles]
 - You might be tempted to try and get this to work with SeaBIOS
 - Don't
 - Just use OVMF
+@ulend
 
 ---
 

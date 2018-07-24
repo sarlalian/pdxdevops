@@ -6,3 +6,6 @@ highlight : github
 # Behavior
 transition : none
 published : false
+
+
+print-fragments : true  

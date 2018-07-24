@@ -5,7 +5,7 @@
 Will Fife  
 wfife@laika.com
 
---- -?image=img/system360-67.jpg
+---?image=img/system360-67.jpg&size=cover&opacity=50
 
 ## The early days of Virtualization:
 
@@ -18,13 +18,14 @@ CP-40 was a revolutionary research operating system that supported virtual machi
 
 The early days of Virtualization on hardware that is affordable by mere mortals.
 
-@ul
+@ul[circles]
 - 1994: Bochs
 - 1997: Virtual PC
 - 1999: VMWare Virtual Platform
 - 2003: First release of Xen
 - 2007: First release of KVM, integrated with the Linux kernel, requires hardware support.
 - 2007: First release of VirtualBox
+@ulend
 
 ---
 
@@ -34,20 +35,21 @@ The early days of Virtualization on hardware that is affordable by mere mortals.
 
 x86 processors have different "protection rings".
 
-@ul
-
+@ul[circles]
 - Ring 0 can do anything it wants with hardware
 - Ring 3 can crash at any time without impacting anything else.
 - Ring 1 & 2 are almost never used. @note[There are other rings, but those only come into play if we turn this into a security talk.]
+@ulend
 
 ---
 
 ![protection rings](img/sec_rings.png)
 
-@note[This presents a problem for running a virtualized guest, if it wants to write to video memory it needs Ring 0 access but is running in ring 3.]
-@note[Typically 10x slower than bare meta.]
-@note[Slow, hacky and complex.]
+Note:
 
+- This presents a problem for running a virtualized guest, if it wants to write to video memory it needs Ring 0 access but is running in ring 3.
+- Typically 10x slower than bare meta.
+- Slow, hacky and complex.
 
 ---
 
@@ -55,19 +57,23 @@ x86 processors have different "protection rings".
 
 ## Intel Virtualization Technologies
 
+@ul[circles]
 - 2006 - Intel VT-x
 - 2008 - Intel EPT
 - 2009 - Intel VT-d
 - 2013 - Intel APICv
 - 2012 - SR-IOV
+@ulend
 
-@note[ EPT was first available on Desktop CPU's, EPT and VT-d arrived on Xeon CPU's with the Nehalem architecture. ]
+Note:
+
+- EPT was first available on Desktop CPU's, EPT and VT-d arrived on Xeon CPU's with the Nehalem architecture.
 
 ---
 
 2006 Hardware Virtualization came to intel
 
-![seen the light](img/blues_brothers.mp4)
+![seen the light](img/blues_brothers.gif)
 
 ---
 

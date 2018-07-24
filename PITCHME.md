@@ -5,7 +5,7 @@
 Will Fife  
 wfife@laika.com
 
----?image=assets/image/system360-67.jpg&size=cover&opacity=70
+---?image=assets/image/system360-67.jpg&size=cover&opacity=20
 
 ## The early days of Virtualization:
 

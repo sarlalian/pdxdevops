@@ -5,28 +5,26 @@
 Will Fife  
 wfife@laika.com
 
----
+--- -?image=img/system360-67.jpg
 
 ## The early days of Virtualization:
 
-@ul
-
-- 1964 / 1965: CP-40 and IBM System/360-67
+#### 1964 / 1965: CP-40 and IBM System/360-67
 
 CP-40 was a revolutionary research operating system that supported virtual machines, virtual memory and more.  Both CP-40 and 
 
-![IBM System/360-67](img/system360-67.jpg)
-
 ---
+@transition[none]
 
 The early days of Virtualization on hardware that is affordable by mere mortals.
 
-1994: Bochs
-1997: Virtual PC
-1999: VMWare Virtual Platform
-2003: First release of Xen
-2007: First release of KVM, integrated with the Linxu kernel, requires hardware support.
-2007: Firt release of VirtualBox
+@ul
+- 1994: Bochs
+- 1997: Virtual PC
+- 1999: VMWare Virtual Platform
+- 2003: First release of Xen
+- 2007: First release of KVM, integrated with the Linux kernel, requires hardware support.
+- 2007: First release of VirtualBox
 
 ---
 
@@ -34,24 +32,13 @@ The early days of Virtualization on hardware that is affordable by mere mortals.
 
 ![seen the light](img/blues_brothers.mp4)
 
-
----
-
-@transition[fade]
-
-2006 - Intel VT-x / AMD-V     : x86 Virtualization
-2008 - Intel EPT  / AMD RVI   : MMU Virtualization
-2009 - Intel VT-d / AMD-Vi    : I/O MMU virtualization ( PCI passthrough )
-2013 - Intel APICv / AMD AVIC : Interrupt virtualization
-2012 - SR-IOV                 : Single Root IO Virtualization
-
-@note[ EPT was first available on Desktop CPU's, EPT and VT-d arrived on Xeon CPU's with the Nehalem architecture. ]
-
 ---
 
 ## Trap and Emulate Virtualization
 
 x86 processors have different "protection rings".
+
+@ul
 
 - Ring 0 can do anything it wants with hardware
 - Ring 3 can crash at any time without impacting anything else.
@@ -59,12 +46,28 @@ x86 processors have different "protection rings".
 
 @note[There are other rings, but those only come into play if we turn this into a security talk.]
 
+---
+
 ![protection rings](img/sec_rings.png)
 
 @note[This presents a problem for running a virtualized guest, if it wants to write to video memory it needs Ring 0 access but is running in ring 3.]
 @note[Typically 10x slower than bare meta.]
 @note[Slow, hacky and complex.]
 
+
+---
+
+@transition[fade]
+
+## Intel Virtualization Technologies
+
+- 2006 - Intel VT-x
+- 2008 - Intel EPT
+- 2009 - Intel VT-d
+- 2013 - Intel APICv
+- 2012 - SR-IOV
+
+@note[ EPT was first available on Desktop CPU's, EPT and VT-d arrived on Xeon CPU's with the Nehalem architecture. ]
 
 ---
 

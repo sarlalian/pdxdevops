@@ -250,13 +250,13 @@ Note:
 
 ## UMA (Uniform Memory Access)
 
-![uma](assets/images/uma_layout.jpg)
+![uma](assets/image/uma_layout.jpg)
 
 ---
 
 ## NUMA (Non-Uniform Memory Access)
 
-![numa](assets/images/numa.png)
+![numa](assets/image/numa.png)
 
 ---
 

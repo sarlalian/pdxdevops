@@ -79,7 +79,7 @@ Note:
 
 ## Hardware-assisted virtualization
 
-Intel (VT-x) and AMD (AMD-V) introduced in 2006
+Intel (VT-x) introduced in 2006
 
 Note:
 
@@ -87,9 +87,17 @@ Note:
 
 ---
 
+## MMU Virtualization
+
+#### Intel EPT (Extended Page Tables)
+
+Note:
+
+- Virtualized MMU for the Guest OS, so the host OS doesn't have to manage shadow page tables. 
+
+---
 
 ## Virtual Memory
-
 
 
 ![Virtual Memory](assets/image/virtual_memory.svg)
@@ -107,19 +115,10 @@ Note:
 
 ---
 
-## MMU Virtualization
-
-* Extended Page Tables
-* Rapid Virtualization Indexing
-
-Note:
-
-- Virtualized MMU for the Guest OS, so the host OS doesn't have to manage shadow page tables. 
-
----
-
 
 ## Interrupt virtualization and I/O MMU virtualization 
+
+#### Intel VT-d
 
 
 Note:

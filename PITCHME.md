@@ -2,7 +2,8 @@
 
 ## Intel CPU's, Virtualization and You!
 
-by Will Fife  <wfife@laika.com>
+Will Fife  
+wfife@laika.com
 
 ---
 
@@ -35,6 +36,8 @@ The early days of Virtualization on hardware that is affordable by mere mortals.
 
 
 ---
+
+@transition[fade]
 
 2006 - Intel VT-x / AMD-V     : x86 Virtualization
 2008 - Intel EPT  / AMD RVI   : MMU Virtualization

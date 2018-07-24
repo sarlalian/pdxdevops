@@ -81,7 +81,9 @@ Note:
 
 Intel (VT-x) and AMD (AMD-V) introduced in 2006
 
-@note[Used by hypervisor to handle privileged intructions, they add new instructions that permit entering and exiting a virtual execution mode where the guest OS perceives itself as running with full privilege (ring 0), but the host OS remains protected.]
+Note:
+
+- Used by hypervisor to handle privileged intructions, they add new instructions that permit entering and exiting a virtual execution mode where the guest OS perceives itself as running with full privilege (ring 0), but the host OS remains protected.
 
 ---
 
@@ -89,14 +91,19 @@ Intel (VT-x) and AMD (AMD-V) introduced in 2006
 ## Virtual Memory
 
 
-@note[Modern Operating Systems manage translating ]
 
 ![Virtual Memory](img/virtual_memory.svg)
 
-@note[Modern Operating Systems use a combination of hardware MMU and software to map the virtual addresses of processes onto the physical addresses of the computers memory.]
+@ul[circles]
+- https://en.wikipedia.org/wiki/Page_table
+- https://en.wikipedia.org/wiki/Virtual_memory
+@endul
 
-* https://en.wikipedia.org/wiki/Page_table
-* https://en.wikipedia.org/wiki/Virtual_memory
+Note:
+
+- Modern Operating Systems manage translating
+- Modern Operating Systems use a combination of hardware MMU and software to map the virtual addresses of processes onto the physical addresses of the computers memory.
+
 
 ---
 

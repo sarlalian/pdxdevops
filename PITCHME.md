@@ -100,7 +100,7 @@ Note:
 ## Virtual Memory
 
 
-![Virtual Memory](assets/image/virtual_memory.svg)
+![Virtual Memory](assets/image/virtual_memory.png)
 
 @ul[circles]
 - https://en.wikipedia.org/wiki/Page_table

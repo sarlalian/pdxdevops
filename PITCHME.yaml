@@ -1,9 +1,6 @@
-# Layout
-layout : center-right
-
 # Look-and-Feel
 theme : beige
-highlight : ir-black
+highlight : github
 
 # Behavior
 transition : none

@@ -14,6 +14,7 @@ wfife@laika.com
 CP-40 was a revolutionary research operating system that supported virtual machines, virtual memory and more.  Both CP-40 and 
 
 ---
+@transition[none]
 
 The early days of Virtualization on hardware that is affordable by mere mortals.
 
@@ -27,6 +28,8 @@ The early days of Virtualization on hardware that is affordable by mere mortals.
 
 ---
 
+@transition[none]
+
 ## Trap and Emulate Virtualization
 
 x86 processors have different "protection rings".
@@ -35,9 +38,7 @@ x86 processors have different "protection rings".
 
 - Ring 0 can do anything it wants with hardware
 - Ring 3 can crash at any time without impacting anything else.
-- Ring 1 & 2 are almost never used.
-
-@note[There are other rings, but those only come into play if we turn this into a security talk.]
+- Ring 1 & 2 are almost never used. @note[There are other rings, but those only come into play if we turn this into a security talk.]
 
 ---
 

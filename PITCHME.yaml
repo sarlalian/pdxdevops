@@ -1,0 +1,10 @@
+# Layout
+layout : center-right
+
+# Look-and-Feel
+theme : beige
+highlight : ir-black
+
+# Behavior
+transition : none
+published : false

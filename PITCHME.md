@@ -11,35 +11,33 @@ wfife@laika.com
 
 #### 1964 / 1965: CP-40 and IBM System/360-67
 
-CP-40 was a revolutionary research operating system that supported virtual machines, virtual memory and more.  Both CP-40 and 
+- CP-40 was a revolutionary research operating system that supported virtual machines, virtual memory and more.  
 
 ---
 @transition[none]
 
 The early days of Virtualization on hardware that is affordable by mere mortals.
 
-@ul[circles]
 - 1994: Bochs
 - 1997: Virtual PC
 - 1999: VMWare Virtual Platform
 - 2003: First release of Xen
 - 2007: First release of KVM, integrated with the Linux kernel, requires hardware support.
 - 2007: First release of VirtualBox
-@ulend
 
 ---
-
-@transition[none]
 
 ## Trap and Emulate Virtualization
 
 x86 processors have different "protection rings".
 
-@ul[circles]
 - Ring 0 can do anything it wants with hardware
 - Ring 3 can crash at any time without impacting anything else.
-- Ring 1 & 2 are almost never used. @note[There are other rings, but those only come into play if we turn this into a security talk.]
-@ulend
+- Ring 1 & 2 are almost never used. 
+
+Note:
+
+- There are other rings, but those only come into play if we turn this into a security talk.
 
 ---
 
@@ -61,8 +59,8 @@ Note:
 - 2006 - Intel VT-x
 - 2008 - Intel EPT
 - 2009 - Intel VT-d
-- 2013 - Intel APICv
 - 2012 - SR-IOV
+- 2013 - Intel APICv
 @ulend
 
 Note:

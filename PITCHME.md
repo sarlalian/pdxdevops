@@ -227,12 +227,12 @@ virsh edit [vmname]
     <topology sockets='1' cores='2' threads='2'/>
     ...
 </cpu>
+```
 
 Note:
 
 - Assuming Hyperthreading
 - Assuming you want your guest to see the CPU like it actually is.
-
 ```
 
 ---
@@ -240,8 +240,11 @@ Note:
 ## Memory
 
 
----?image=assets/image/uma.jpg
+---
+
 ## UMA
+
+![uma](assets/image/uma.jpg)
 
 
 ---

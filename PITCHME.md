@@ -5,7 +5,7 @@
 Will Fife  
 wfife@laika.com
 
----?image=img/system360-67.jpg&size=cover&opacity=70
+---?image=assets/image/system360-67.jpg&size=cover&opacity=70
 
 ## The early days of Virtualization:
 
@@ -43,7 +43,7 @@ x86 processors have different "protection rings".
 
 ---
 
-![protection rings](img/sec_rings.png)
+![protection rings](assets/image/sec_rings.png)
 
 Note:
 
@@ -73,7 +73,7 @@ Note:
 
 2006 Hardware Virtualization came to intel
 
-![seen the light](img/blues_brothers.gif)
+![seen the light](assets/image/blues_brothers.gif)
 
 ---
 
@@ -92,7 +92,7 @@ Note:
 
 
 
-![Virtual Memory](img/virtual_memory.svg)
+![Virtual Memory](assets/image/virtual_memory.svg)
 
 @ul[circles]
 - https://en.wikipedia.org/wiki/Page_table
@@ -112,7 +112,9 @@ Note:
 * Extended Page Tables
 * Rapid Virtualization Indexing
 
-@note[ Virtualized MMU for the Guest OS, so the host OS doesn't have to manage shadow page tables.  ]
+Note:
+
+- Virtualized MMU for the Guest OS, so the host OS doesn't have to manage shadow page tables. 
 
 ---
 
@@ -120,12 +122,20 @@ Note:
 ## Interrupt virtualization and I/O MMU virtualization 
 
 
+Note:
 
+- This is PCI passthrough
+- This allows things like network and video passthrough to guest VM's
 
 ---
 
 ## SR-IOV
 
+Note:
+
+- This allows a PCIe device to be carved up and divied out to multipe VM's
+- Each VM can have a physical network card
+- Each VM can have part of a GPU (Tesla)
 
 ---
 
@@ -136,21 +146,27 @@ cat /proc/cmdline
 BOOT_IMAGE=/vmlinuz-4.15.15-200.fc26.x86_64 root=/dev/mapper/basevg-root ro rd.driver.pre=vfio-pci pci-stub.ids=10de:1bb1,10de:10f0,6549:2200 nouveau.modeset=0 rd.blacklist=nouveau modprobe.blacklist=nouveau iommu=pt intel_iommu=on rd.lvm.lv=basevg/root
 ```
 
-```
-amd_iommu=on
-```
+Note:
+
+- If you are passing through an NVIDIA ard, you need to disable the nouveau driver
+
 ---
 
-## 
+## IOMMU and Linux
 
 ```
 intel_iommu=on
 iommu=pt
 ```
 
-@note[ iommu=pt is iommu = pass through.  disable Dynamic DMA remapping in the linux kernel. ]
+Note:
+
+- iommu=pt is iommu = pass through.  disable Dynamic DMA remapping in the linux kernel.
+- The pt option only enables IOMMU for devices used in passthrough and will provide better host performance.
 
 ---
+
+## Stubbing out 
 
 ```
 lspci -vnn
@@ -176,7 +192,9 @@ lspci -vnn
 ```
 ---
 
-
+```
+options vfio_iommu_type1 allow_unsafe_interrupts=1
+```
 
 ---
 

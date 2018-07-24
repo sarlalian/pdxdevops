@@ -14,7 +14,6 @@ wfife@laika.com
 CP-40 was a revolutionary research operating system that supported virtual machines, virtual memory and more.  Both CP-40 and 
 
 ---
-@transition[none]
 
 The early days of Virtualization on hardware that is affordable by mere mortals.
 
@@ -25,12 +24,6 @@ The early days of Virtualization on hardware that is affordable by mere mortals.
 - 2003: First release of Xen
 - 2007: First release of KVM, integrated with the Linux kernel, requires hardware support.
 - 2007: First release of VirtualBox
-
----
-
-2006 Hardware Virtualization came to intel
-
-![seen the light](img/blues_brothers.mp4)
 
 ---
 
@@ -68,6 +61,12 @@ x86 processors have different "protection rings".
 - 2012 - SR-IOV
 
 @note[ EPT was first available on Desktop CPU's, EPT and VT-d arrived on Xeon CPU's with the Nehalem architecture. ]
+
+---
+
+2006 Hardware Virtualization came to intel
+
+![seen the light](img/blues_brothers.mp4)
 
 ---
 

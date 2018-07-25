@@ -35,10 +35,6 @@ x86 processors have different "protection rings".
 - Ring 3 can crash at any time without impacting anything else.
 - Ring 1 & 2 are almost never used. 
 
-Note:
-
-- There are other rings, but those only come into play if we turn this into a security talk.
-
 ---
 
 ![protection rings](assets/image/sec_rings.png)
@@ -180,17 +176,7 @@ lspci -vnn
         Memory at 96000000 (32-bit, non-prefetchable) [size=16M]
         Memory at afe0000000 (64-bit, prefetchable) [size=256M]
         Memory at aff0000000 (64-bit, prefetchable) [size=32M]
-        I/O ports at 6000 [size=128]
-        Expansion ROM at 97080000 [disabled] [size=512K]
-        Capabilities: [60] Power Management version 3
-        Capabilities: [68] MSI: Enable+ Count=1/1 Maskable- 64bit+
-        Capabilities: [78] Express Legacy Endpoint, MSI 00
-        Capabilities: [100] Virtual Channel
-        Capabilities: [250] Latency Tolerance Reporting
-        Capabilities: [128] Power Budgeting <?>
-        Capabilities: [420] Advanced Error Reporting
-        Capabilities: [600] Vendor Specific Information: ID=0001 Rev=1 Len=024 <?>
-        Capabilities: [900] #19
+        ...
         Kernel driver in use: vfio-pci
         Kernel modules: nouveau
 ```
@@ -223,10 +209,10 @@ options vfio-pci ids=10de:1bb1,10de:10f0,6549:2200
 virsh edit [vmname]
 <vcpu placement='static'>4</vcpu>
 <cputune>
-    <vcpupin vcpu='0' cpuset='2'/>
-    <vcpupin vcpu='1' cpuset='6'/>
-    <vcpupin vcpu='2' cpuset='3'/>
-    <vcpupin vcpu='3' cpuset='7'/>
+    <vcpupin vcpu='0' cpuset='0'/>
+    <vcpupin vcpu='1' cpuset='2'/>
+    <vcpupin vcpu='2' cpuset='4'/>
+    <vcpupin vcpu='3' cpuset='6'/>
 </cputune>
 ...
 <cpu mode='custom' match='exact'>
@@ -287,6 +273,12 @@ virsh edit [vmname]
 
 ```
 default_hugepagesz=1G hugepagesz=1G hugepages=256 transparent_hugepage=never
+```
+
+##### Mount the hugepages
+
+```
+mount -t hugetlbfs hugetlbfs /mnt/hugepages
 ```
 
 ---

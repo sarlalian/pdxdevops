@@ -2,10 +2,11 @@
 background : assets/image/bg.png
 theme : white
 highlight : github
+theme-override : assets/css/PITCHME.css
 
 # Behavior
 transition : slide
 published : false
 
 
-print-fragments : true  
+print-fragments : true

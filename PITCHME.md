@@ -27,7 +27,7 @@ The early days of Virtualization on hardware that is affordable by mere mortals.
 
 ---
 
-##
+## Trap and Emulate Virtualization
 
 x86 processors have different "protection rings".
 
@@ -38,10 +38,6 @@ x86 processors have different "protection rings".
 Note:
 
 - There are other rings, but those only come into play if we turn this into a security talk.
-
----
-
-## Trap and Emulate Virtualization
 
 ---
 
@@ -113,8 +109,7 @@ Note:
 
 ## Interrupt virtualization and I/O MMU virtualization 
 
-#### Intel VT-d
-
+- VT-d
 
 Note:
 

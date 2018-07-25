@@ -11,7 +11,7 @@ wfife@laika.com
 
 #### 1964 / 1965: CP-40 and IBM System/360-67
 
-- CP-40 was a revolutionary research operating system that supported virtual machines, virtual memory and more.  
+- CP-40 was a revolutionary research operating system that supported virtual machines, virtual memory and more.
 
 ---
 @transition[none]
@@ -103,9 +103,11 @@ Note:
 
 ---
 
-## Interrupt virtualization and I/O MMU virtualization 
+## I/O MMU virtualization / 
+## Interrupt virtualization
 
 - VT-d
+- APICv
 
 Note:
 

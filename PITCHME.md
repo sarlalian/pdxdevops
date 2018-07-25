@@ -128,6 +128,29 @@ Note:
 
 ---
 
+## Enabling Extra VF's
+
+```
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+2: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq master br0 state UP group default qlen 1000
+3: eno2: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+...
+```
+
+```
+echo 4 > /sys/class/net/eno2/device/sriov_numvfs
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+2: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq master br0 state UP group default qlen 1000
+3: eno2: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+...
+25: eth0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+26: eth1: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+27: eth2: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+28: eth3: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+```
+
+---
+
 ## Linux and KVM
 
 ```
@@ -165,7 +188,8 @@ Note:
 
 ```
 lspci -vnn
-3b:00.0 VGA compatible controller [0300]: NVIDIA Corporation GP104GL [Quadro P4000] [10de:1bb1] (rev a1) (prog-if 00 [VGA controller])
+3b:00.0 VGA compatible controller [0300]: NVIDIA Corporation GP104GL [Quadro P4000] \
+    [10de:1bb1] (rev a1) (prog-if 00 [VGA controller])
         Subsystem: Dell Device [1028:11a3]
         Flags: bus master, fast devsel, latency 0, IRQ 235, NUMA node 0
         Memory at 96000000 (32-bit, non-prefetchable) [size=16M]
@@ -192,24 +216,25 @@ lspci -vnn
 
 #### The kernel command line is where you attach devices to the pci-stub driver
 
-```
-pci-stub.ids=10de:1bb1,10de:10f0,6549:2200   
+```bash
+pci-stub.ids=10de:1bb1,10de:10f0,6549:2200
 ```
 
 ---
 
 ## VFIO (Virtual Function I/O)
 
-```
+```bash
 cat /etc/modprobe.d/vfio.conf
 options vfio-pci ids=10de:1bb1,10de:10f0,6549:2200 
 ```
+
 
 ---
 
 ## CPU Pinning
 
-```
+```xml
 virsh edit [vmname]
 <vcpu placement='static'>4</vcpu>
 <cputune>
@@ -332,6 +357,8 @@ virsh edit [vmname]
         <hidden state='on'/>
     </kvm>
 </features>
+```
+
 ---
 
 

@@ -104,11 +104,8 @@ Note:
 
 ---
 
-## I/O MMU virtualization / 
-## Interrupt virtualization
+## I/O MMU virtualization VT-D
 
-- VT-d
-- APICv
 
 Note:
 
@@ -132,6 +129,10 @@ Note:
 ```
 echo 4 > /sys/class/net/eno2/device/sriov_numvfs
 ```
+
+---
+
+## Interrupt Virtualization / APICv
 
 ---
 

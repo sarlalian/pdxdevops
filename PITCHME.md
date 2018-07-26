@@ -47,6 +47,13 @@ Note:
 
 ---
 
+
+2006 Hardware Virtualization came to intel
+
+![seen the light](assets/image/blues_brothers.gif)
+
+---
+
 @transition[fade]
 
 ## Intel Virtualization Technologies
@@ -62,12 +69,6 @@ Note:
 Note:
 
 - EPT was first available on Desktop CPU's, EPT and VT-d arrived on Xeon CPU's with the Nehalem architecture.
-
----
-
-2006 Hardware Virtualization came to intel
-
-![seen the light](assets/image/blues_brothers.gif)
 
 ---
 
